@@ -21,6 +21,11 @@ document.querySelector('.check').addEventListener('click', function () {
     document.querySelector('.number').style.width = '30rem';
     document.querySelector('.number').textContent = number;
 
+    if (score > highScore) {
+      highScore = score;
+      document.querySelector('.highscore').textContent = highScore;
+    }
+
     //When the player guesses incorrectly (number is too low)
   } else if (guess < number) {
     if (score > 1) {
@@ -53,11 +58,6 @@ document.querySelector('.check').addEventListener('click', function () {
 
 //To restart the game
 document.querySelector('.again').addEventListener('click', function () {
-  if (score > highScore) {
-    highScore = score;
-    document.querySelector('.highscore').textContent = highScore;
-  }
-
   number = Math.floor(Math.random() * 20) + 1;
 
   score = 20;
