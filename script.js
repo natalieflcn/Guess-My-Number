@@ -26,33 +26,19 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.highscore').textContent = highScore;
     }
 
-    //When the player guesses incorrectly (number is too low)
-  } else if (guess < number) {
-    if (score > 1) {
-      document.querySelector('.message').textContent = '📉 Too low!';
-      score--;
-      document.querySelector('.score').textContent = score;
+    //When the guess is wrong
+  } else if (guess !== number) {
+    guess < number
+      ? (document.querySelector('.message').textContent = '📉 Too low!')
+      : (document.querySelector('.message').textContent = '📈 Too high!');
+    score--;
+    document.querySelector('.score').textContent = score;
 
-      //When the player loses
-    } else if (score === 1) {
-      document.querySelector('.message').textContent = '🤕 You lost!';
-      score--;
-      document.querySelector('.score').textContent = score;
-    }
-
-    //When the player guesses incorrectly (number is too high)
-  } else if (guess > number) {
-    if (score > 1) {
-      document.querySelector('.message').textContent = '📈 Too high!';
-      score--;
-      document.querySelector('.score').textContent = score;
-
-      //When the player loses
-    } else if (score === 1) {
-      document.querySelector('.message').textContent = '🤕 You lost!';
-      score--;
-      document.querySelector('.score').textContent = score;
-    }
+    //When the player loses
+  } else if (score === 1) {
+    document.querySelector('.message').textContent = '🤕 You lost!';
+    score--;
+    document.querySelector('.score').textContent = score;
   }
 });
 
@@ -67,7 +53,6 @@ document.querySelector('.again').addEventListener('click', function () {
   document.querySelector('.number').textContent = '?';
 
   document.querySelector('.guess').value = false;
-  //TODO reset the input type back to blank
 
   document.querySelector('body').style.backgroundColor = '#222';
   document.querySelector('.number').style.width = '15rem';
